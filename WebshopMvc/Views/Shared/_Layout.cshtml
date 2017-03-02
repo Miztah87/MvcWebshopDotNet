@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    @Html.Action("GetMainNav", "Category")
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <div class="col-md-6"><p>&copy; @DateTime.Now.Year - Web Shop | Main street  |   City | 6880 </p></div>
+            <div class="col-md-2 col-md-offset-4"><a href="#">Terms and Conditions</a></div>
+
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

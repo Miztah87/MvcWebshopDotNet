@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ShopDAL.DomainModel.Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+<a href="@Url.Action("Administration", "Home")" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-chevron-left"></span> Tillbage</a>
+<h2>Produkter</h2>
+<hr />
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChildOf)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+
+                @Html.DisplayFor(modelItem => item.ChildOf)
+
+                @*@{Html.RenderAction("ListOfChilds", "Category");}*@
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { pageName = item.CategoryName }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id }) |
+                @Html.ActionLink("Add Child", "CreateChild", new { id = item.id })
+            </td>
+            <td></td>
+        </tr>
+    }
+
+</table>

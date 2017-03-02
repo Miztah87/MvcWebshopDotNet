@@ -1,0 +1,10 @@
+﻿
+@model IEnumerable<ShopDAL.DomainModel.Category>
+
+<p>
+    Childrens
+</p>
+@foreach (var cat in Model)
+{
+    @cat.CategoryName
+}

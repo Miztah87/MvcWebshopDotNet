@@ -1,0 +1,47 @@
+﻿@using ShopDAL.DomainModel
+@model IEnumerable<Category>
+
+<div class="well" style="width:300px; padding: 8px 0;">
+
+    <ul style="list-style-type:none;">
+        <li>@Html.ActionLink("Alle Produker", "Shop", "Home")</li>
+    </ul>
+    @DisplayTree(Model.Where(e => e.ChildOf == 0).OrderByDescending(e => e.ChildOf))
+
+    @helper DisplayTree(IEnumerable<Category> categories)
+    {
+        int i = 0;
+        <ul class="tree" style="list-style-type:none;  ">
+
+            @foreach (var element in categories)
+            {
+                <li style="">
+                    <label id="lbl_@(i=element.id)" class="tree-toggler nav-header" style=""><i id="chev_@(i=element.id)" class="fa fa-minus-square-o" aria-hidden="true"></i></label>  @Html.ActionLink(element.CategoryName, "Details", new { pageName = element.CategoryName }, new { @class = "", @style = "display:inline-block; color:black;" })
+
+                    @{
+                        var children = Model.Where(e => e.ChildOf == element.id).OrderBy(e => e.ChildOf).ToList();
+                        if (children.Count() > 0)
+                        {
+                            @DisplayTree(children)
+                        }
+
+                    }
+                </li>
+
+                        }
+        </ul>
+        <script>
+            $('#lbl_@(i)').click(function () {
+                $('#chev_@(i)').toggleClass('fa-plus-square-o');
+            });
+        </script>
+    }
+</div>
+<script>
+
+    $('label.tree-toggler').click(function () {
+        $(this).parent().children('ul.tree').toggle(300);
+    });
+
+</script>
+

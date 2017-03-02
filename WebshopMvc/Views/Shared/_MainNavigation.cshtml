@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ShopDAL.DomainModel.Category>
+
+<div class="navbar navbar-default ">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Bolte og Bøsninger", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+
+              
+                <li>@Html.ActionLink("Shop", "Shop", "Home", null, null)</li>
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <li> @Html.Action("CartSummary", "ShoppingCart")</li>
+
+                @if (Request.IsAuthenticated)
+                {
+                    <li>@Html.ActionLink("Admin", "Administration", "Home", null, null)</li>
+                }
+            </ul>
+
+            @Html.Partial("_LoginPartial")
+        </div>
+        <div id="pDiv"></div>
+    </div>
+
+</div>

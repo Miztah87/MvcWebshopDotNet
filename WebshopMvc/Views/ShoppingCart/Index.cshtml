@@ -1,0 +1,129 @@
+﻿@model WebshopMvc.Models.ViewModels.ShoppingCartViewModel
+
+<h3>
+    <em>Review</em> your cart:
+</h3>
+<p class="button">
+    @Html.ActionLink("Checkout ", "AddressAndPayment", "Checkout") | @Html.ActionLink("Back To Shopping", "Index", "Product", null, null)
+</p>
+<div id="update-message">
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            Product Name
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Quantity
+        </th>
+    </tr>
+
+    @{int ix = 0;}
+    @foreach (var pr in Model.CartItems)
+    {
+        <tr id="row-@pr.ProductId">
+            <td>
+                @Html.ActionLink(pr.Product.Type, "Details", "Product", new { id = pr.ProductId }, null)
+            </td>
+
+            <td>
+                @pr.Product.Price
+            </td>
+           
+            <td>
+                @Html.TextBoxFor(model => model.CartItems[ix].Count, new
+               {
+                   @type = "number",
+                   style = "width:30px; text-align:right;",
+                   @onchange = "onchangeevent();"
+               })
+            </td>
+            <td>
+                <a href="#" class="RefreshQuantity" data-id="@pr.ProductId"
+                   txt-id="CartItems_@(ix)__Count">
+                    Refresh quantity
+                </a>
+                &nbsp;|&nbsp;
+                <a href="#" class="RemoveLink"
+                   data-id="@pr.ProductId">
+                    Remove
+                    from cart
+                </a>
+            </td>
+
+        </tr>
+
+        ix++;
+    }
+
+    <tr class="alert alert-success">
+        <td>
+            Total
+        </td>
+        <td></td>
+        <td></td>
+        <td id="cart-total" class="">
+            @Model.CartTotal
+        </td>
+    </tr>
+</table>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var $ = jQuery;
+        $('#update-message').removeClass("show");
+        // Document.ready -> link up remove event handler
+        $(".RemoveLink").click(function () {
+            $('#update-message').removeClass("show");
+
+            // Get the id from the link
+            var recordToDelete = $(this).attr("data-id");
+            if (recordToDelete != '') {
+                // Perform the ajax post
+                $.post("/ShoppingCart/RemoveFromCart", {"id": recordToDelete },
+                    function (data) {
+                        // Successful requests get here
+                        // Update the page elements
+                        //if (data.ItemCount == 0) {
+                            $('#row-' + data.DeleteId).fadeOut('slow');
+                        //} else {
+                        //    $('#item-count-' + data.DeleteId).text(data.ItemCount);
+                        //}
+                        $('#cart-total').text(data.CartTotal);
+                        $('#update-message').text(data.Message);
+                        $('#cart-status').text('Cart (' + data.CartCount + ')');
+                    });
+            }
+            $('#update-message').addClass("show");
+            setTimeout(function () { $('#update-message').removeClass("show"); }, 2000);
+        });
+        $(".RefreshQuantity").click(function () {
+            // Get the id from the link
+            var recordToUpdate = $(this).attr("data-id");
+            var countToUpdate = $("#" + $(this).attr("txt-id")).val();
+            if (recordToUpdate != '') {
+                // Perform the ajax post
+                $.post("/ShoppingCart/UpdateCartCount", { "id": recordToUpdate, "cartCount": countToUpdate },
+                    function (data) {
+                        // Successful requests get here
+                        // Update the page elements
+                        if (data.ItemCount == 0) {
+                            $('#row-' + data.DeleteId).fadeOut('slow');
+                        }
+                        $('#update-message').text(data.Message);
+                        $('#cart-total').text(data.CartTotal);
+                        $('#cart-status').text('Cart (' + data.CartCount + ')');
+                    });
+            }
+        });
+
+    });
+    function onchangeevent() {
+        // Get the id from the link
+        $(".RefreshQuantity").click();
+    }
+</script>
+

@@ -1,0 +1,102 @@
+﻿@model IEnumerable<ShopDAL.DomainModel.Product>
+
+
+<a href="@Url.Action("Administration", "Home")" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-chevron-left"></span> Tillbage</a>
+<h2>Produkter</h2>
+<hr />
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        @*<th>
+                @Html.DisplayNameFor(model => model.CategoryId)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Position)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductNum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.imageUrl)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.CategoryId)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.Quantity)*@
+                @*@Html.TextBoxFor(modelItem => item.Quantity, new {id="qty", txtid="prod"+ i})*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.imageUrl)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })|
+
+                @Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = item.id }, new { })
+               
+            </td>
+        </tr>
+
+    }
+
+</table>
+
+<script type="text/javascript">
+  
+    function addtoCart() {
+
+        var recordToAdd = $(".AddProductToCart").attr("data-id");
+        var countToAdd = $("#" + $(this).attr("txtid"));
+
+        if (recordToAdd != '') {
+            // Perform the ajax post
+        
+            $.post("/ShoppingCart/AddToCart", { "id": recordToAdd, "qty": countToAdd.val() },
+            function (data) {
+                var recordToAdd = $(".AddProductToCart").attr("data-id");
+                var countToAdd = $("#qty").val();
+
+            });
+        }
+    }
+
+
+</script>

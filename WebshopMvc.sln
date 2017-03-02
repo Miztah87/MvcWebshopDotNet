@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebshopMvc", "WebshopMvc\WebshopMvc.csproj", "{FD12690C-D7A1-46D6-9175-03E14D5D7F87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopDAL", "ShopDAL\ShopDAL.csproj", "{9681C52A-8CE0-4605-823F-653EBC87B230}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopBLL", "ShopBLL\ShopBLL.csproj", "{594B8056-1C6E-4331-9370-5FCA8B773E0B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FD12690C-D7A1-46D6-9175-03E14D5D7F87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD12690C-D7A1-46D6-9175-03E14D5D7F87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD12690C-D7A1-46D6-9175-03E14D5D7F87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD12690C-D7A1-46D6-9175-03E14D5D7F87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9681C52A-8CE0-4605-823F-653EBC87B230}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9681C52A-8CE0-4605-823F-653EBC87B230}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9681C52A-8CE0-4605-823F-653EBC87B230}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9681C52A-8CE0-4605-823F-653EBC87B230}.Release|Any CPU.Build.0 = Release|Any CPU
+		{594B8056-1C6E-4331-9370-5FCA8B773E0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{594B8056-1C6E-4331-9370-5FCA8B773E0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{594B8056-1C6E-4331-9370-5FCA8B773E0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{594B8056-1C6E-4331-9370-5FCA8B773E0B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

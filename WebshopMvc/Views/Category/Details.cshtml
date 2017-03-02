@@ -1,0 +1,48 @@
+﻿@model ShopDAL.DomainModel.Category
+@{
+    ViewBag.Title = "Details";
+}
+<div class="col-md-12">
+   
+    <ol class="breadcrumb">      
+        <li> @Html.ActionLink(Model.CategoryName, "Details", "Category", new { pageName = Model.CategoryName }, null)</li>
+    </ol>
+
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <br />
+        @Html.Action("ListOfCategory", "Category")
+    </div>
+    <div class="col-md-8">
+        <div class="">
+            <h4>@Model.CategoryName</h4><hr />
+            <div class="col-md-12 img-responsive">
+                @Html.Raw(Model.CategoryText)
+            </div>
+            <table class="table table-striped">
+                @foreach (var item in Model.Products)
+                {
+                    <tr>
+                        <td class="list-group-item">
+                            <span class="badge"><strong>Price: &nbsp;@item.Price dkk</strong></span>
+                            <div class="row">
+                                <div class="col-md-7">@item.Type</div>
+                                <div class="col-md-2">
+                                    @Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = item.id }, new { })
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </table>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+        </div>
+
+    </div>
+
+
+</div>

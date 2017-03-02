@@ -1,0 +1,12 @@
+﻿@model IEnumerable<ShopDAL.DomainModel.Category>
+
+
+<ol class="breadcrumb">
+    @foreach (var item in Model)
+    {
+    <li>
+        @Html.DisplayFor(modelItem => item.CategoryName)
+    </li>
+    }
+</ol>
+
