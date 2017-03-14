@@ -1,1 +1,19 @@
 ﻿
+
+@{
+    ViewBag.Title = "Shop";
+}
+
+<h2>Shop</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.Action("ListOfCategory", "Category")
+
+    </div>
+    <div class="col-md-8">
+        <h3>Alle Produkter</h3>
+        @Html.Action("GetAllProducts", "Product")
+    </div>
+</div>
