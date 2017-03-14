@@ -8,13 +8,13 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="invoice-title">
-                <h2>Ordrebekræftelse</h2><h3 class="pull-right">Order @Model.OrderId</h3>
+                <h2>Receipt</h2><h3 class="pull-right">Order @Model.OrderId</h3>
             </div>
             <hr>
             <div class="row">
                 <div class="col-xs-6">
                     <address>
-                        <strong>Faktureret til:</strong><br>
+                        <strong>Ordered by:</strong><br>
                         @Model.FirstName @Model.LastName<br>
                         @Model.Address<br>
                         @Model.City - @Model.PostalCode<br>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-xs-6 text-right">
                     <address>
-                        <strong>Leveringsadresse:</strong><br>
+                        <strong>Shipping address:</strong><br>
                         @Model.FirstName @Model.LastName<br>
                         @Model.Address<br>
                         @Model.City - @Model.PostalCode<br>
@@ -53,7 +53,7 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><strong>Ordre detaljer</strong></h3>
+                    <h3 class="panel-title"><strong>Order details</strong></h3>
                 </div>
                 <div class="panel-body">
                     @{ List<decimal> summs = new List<decimal>(); }
@@ -63,8 +63,8 @@
                             <thead>
                                 <tr>
                                     <td><strong>Product</strong></td>
-                                    <td class="text-center"><strong>Pris</strong></td>
-                                    <td class="text-center"><strong>Kvantitet</strong></td>
+                                    <td class="text-center"><strong>Price</strong></td>
+                                    <td class="text-center"><strong>Quantity</strong></td>
                                     <td class="text-right"><strong>Sum</strong></td>
                                 </tr>
                             </thead>

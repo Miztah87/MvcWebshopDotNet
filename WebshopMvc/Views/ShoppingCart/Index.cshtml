@@ -6,8 +6,12 @@
 <p class="button">
     @Html.ActionLink("Checkout ", "AddressAndPayment", "Checkout") | @Html.ActionLink("Back To Shopping", "Index", "Product", null, null)
 </p>
-<div id="update-message">
+<div id="updateToast" class="col-md-3">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <div id="update-message" class="">
+    </div>
 </div>
+
 
 <table class="table">
     <tr>
@@ -60,7 +64,7 @@
         ix++;
     }
 
-    <tr class="alert alert-success">
+    <tr class="alert alert-info">
         <td>
             Total
         </td>
@@ -72,8 +76,8 @@
     </tr>
 </table>
 <script type="text/javascript">
-    $(document).ready(function () {
-        var $ = jQuery;
+    var $ = jQuery;
+    $(document).ready(function () {       
         $('#update-message').removeClass("show");
         // Document.ready -> link up remove event handler
         $(".RemoveLink").click(function () {
@@ -113,6 +117,8 @@
                         if (data.ItemCount == 0) {
                             $('#row-' + data.DeleteId).fadeOut('slow');
                         }
+                        $("#updateToast").removeClass("alert alert-dismissible alert-success");
+                        $("#updateToast").addClass("alert alert-dismissible alert-success");
                         $('#update-message').text(data.Message);
                         $('#cart-total').text(data.CartTotal);
                         $('#cart-status').text('Cart (' + data.CartCount + ')');

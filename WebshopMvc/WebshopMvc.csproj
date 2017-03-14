@@ -226,6 +226,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\License free.txt" />
+    <Content Include="img\O6S21A0.jpg" />
+    <Content Include="img\OFP6780.jpg" />
+    <Content Include="img\OGMQ3T0.jpg" />
     <Content Include="Rotativa\help-wkhtmltoimage.txt" />
     <Content Include="Rotativa\help-wkhtmltopdf.txt" />
     <Content Include="Rotativa\wkhtmltoimage.exe" />

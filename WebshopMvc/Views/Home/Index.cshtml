@@ -7,9 +7,9 @@
 
     <div class="col-md-8">
         <div class="well">
-            <h3>Velkommen på vores side!</h3>
+            <h3>Velkom to our site!</h3>
             <p>
-                Se gennem vores butik og find den perfekte reservedele til dit behov. Vi har en stor udvalg af kvalitetsprodukter - pin bolte, lasker og bøsninger.
+                Through our webshop you can buy all sort of cool stuffs!
             </p>
             <p> @Html.ActionLink("Start Shopping", "Shop", "Home", null, new { @class = "" }) </p>
         </div>
@@ -17,34 +17,36 @@
     <div class="col-md-4">
         <div class="well">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i> &nbsp; @Html.Action("CartSummary", "ShoppingCart")
-        </div>
-        <img class="img-responsive" src="~/img/digger.jpg" />
+        </div>        
+        <img class="img-responsive" src="~/img/OGMQ3T0.jpg" alt="by freepik" />
     </div>
-    <div class="col-md-12">
+    @*<div class="col-md-12">
         <br />
-    </div>
+    </div>*@
 
     <div class="col-md-8">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
-            <ol class="carousel-indicators">
+            @*<ol class="carousel-indicators">
                 <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                 <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                 <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-            </ol>
+            </ol>*@
 
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img src="~/img/bolte_og_bosninger_banner.jpg" alt="...">
+                    
+                    <img src="~/img/OFP6780.jpg" alt="by freepik" />
                     <div class="carousel-caption">
-                        1
+                        <b class="alert alert-info">Easy and fast payment!</b>
                     </div>
                 </div>
                 <div class="item">
-                    <img src="~/img/bolte_og_bosninger_banner.jpg" alt="...">
+                   
+                    <img src="~/img/O6S21A0.jpg" alt="by freepik" />
                     <div class="carousel-caption">
-                        2
+                        <b class="alert alert-info">Receive your products immediately.</b>
                     </div>
                 </div>
 
@@ -63,8 +65,8 @@
     </div>
     <div class="col-md-4">
         <br /><br />
-        <h4>Fremhævede Produkter</h4>
-        <hr />
+        <h4>Recommended Products</h4>
+       
         @Html.Action("GetRandomProducts", "Product")
     </div>
 
